@@ -20,7 +20,7 @@ import com.ayushsingh.hotel_service.exceptions.ApiResponse;
 import com.ayushsingh.hotel_service.exceptions.SuccessResponse;
 import com.ayushsingh.hotel_service.service.HotelService;
 @RestController
-@RequestMapping(name="/microservices/hotel")
+@RequestMapping("/microservices/hotel")
 public class HotelController {
     @Autowired
     HotelService hotelService;
@@ -53,7 +53,7 @@ public class HotelController {
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 
-    @PostMapping("/create-hotel")
+    @PostMapping("/save-hotel")
     public ResponseEntity<?> createHotel(@RequestBody HotelDto hotelDto){
         HotelDto hotel=this.hotelService.saveHotel(hotelDto);
         SuccessResponse<HotelDto> successResponse=new SuccessResponse<HotelDto>(AppConstants.SUCCESS_CODE,AppConstants.SUCCESS_MESSAGE, hotel);

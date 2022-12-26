@@ -1,7 +1,9 @@
 package com.ayushsingh.hotel_service.serviceimpl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class HotelServiceImpl implements HotelService {
     ModelMapper modelMapper;
     @Override
     public HotelDto saveHotel(HotelDto hotelDto) {
+        hotelDto.setId(UUID.randomUUID().toString());
         Hotel hotel=this.hotelRepository.save(this.hotelDtotoHotel(hotelDto));
         return this.hotelToHotelDto(hotel);
     }
